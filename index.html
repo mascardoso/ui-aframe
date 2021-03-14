@@ -7,13 +7,13 @@
     <script type="text/javascript" src="./node_modules/aframe/dist/aframe-v1.2.0.min.js"></script>
     <script type="text/javascript" src="./node_modules/dat.gui/build/dat.gui.min.js"></script>
     <script type="text/javascript" src="./gui.js"></script>
-    <script type="text/javascript" src="./components/DsvrButton.js"></script>
+    <script type="text/javascript" src="./components/UIVRButton.js"></script>
     <script>
       window.onload = function() {
         addGUI([
           {
             folder: "Colors",
-            component: "dsvrbutton",
+            component: "uivrbutton",
           },
         ]);
       };
@@ -40,13 +40,13 @@
 
       <a-box width="0.6" height="0.4" depth="0.01" color="#FFFFFF" rotation="0 0 0" position="0 1.6 -0.5">
         <a-entity
-          dsvrbutton="text: Grow Sphere; color: #EF2D5E;"
+          uivrbutton="text: Grow Sphere; color: #EF2D5E;"
           onclick="growSphere()"
           position="-0.2 0 0.02"
           data-raycastable
         ></a-entity>
         <a-entity
-          dsvrbutton="text: Shrink Sphere; color: #EF2D5E;"
+          uivrbutton="text: Shrink Sphere; color: #EF2D5E;"
           onclick="shrinkSphere()"
           position="0 0 0.02"
           data-raycastable

@@ -1,4 +1,4 @@
-const DSVRBUTTON = 'dsvrbutton'
+const UIVRBUTTON = 'uivrbutton'
 
 const getCurrentPositionButton = function (el) {
   const position = el.getAttribute('position')
@@ -10,8 +10,8 @@ const getCurrentPositionButton = function (el) {
 }
 
 const getCurrentColor = function (el) {
-  const color = el.getAttribute(DSVRBUTTON).color
-  const onHoverColor = el.getAttribute(DSVRBUTTON).onHoverColor
+  const color = el.getAttribute(UIVRBUTTON).color
+  const onHoverColor = el.getAttribute(UIVRBUTTON).onHoverColor
   return {
     color,
     onHoverColor
@@ -26,12 +26,12 @@ const setEventListeners = function (el, depth) {
     const { onHoverColor } = getCurrentColor(el)
     defaultOldColor = getCurrentColor(el).color
 
-    el.setAttribute(DSVRBUTTON, {depth: depth / 2, color: onHoverColor});
+    el.setAttribute(UIVRBUTTON, {depth: depth / 2, color: onHoverColor});
     el.setAttribute('position', {x, y, z: z / 2});
   })
 
   el.addEventListener('mouseup', function () {
-    el.setAttribute(DSVRBUTTON, {depth: depth, color: defaultOldColor});
+    el.setAttribute(UIVRBUTTON, {depth: depth, color: defaultOldColor});
     el.setAttribute('position', {x, y, z: z});
   })
 }
@@ -46,7 +46,7 @@ const setButtonText = function (el, text, depth, width) {
   })
 }
 
-AFRAME.registerComponent(DSVRBUTTON, {
+AFRAME.registerComponent(UIVRBUTTON, {
   schema: {
     text: { type: 'string', default: 'Click Me!' },
     width: { type: 'number', default: 0.11 },
