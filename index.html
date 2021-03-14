@@ -38,15 +38,15 @@
       <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
       <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
 
-      <a-box width="0.6" height="0.4" depth="0.01" color="#FFFFFF" rotation="0 0 0" position="0 1.6 -0.5">
+      <a-box width="0.6" height="0.4" depth="0.01" color="#000000" rotation="0 0 0" position="0 1.6 -0.5" material="transparent: true; opacity: 0.7">
         <a-entity
-          uivrbutton="text: Grow Sphere; color: #EF2D5E;"
+          uivrbutton="text: Grow Sphere; primaryColor: #EF2D5E;"
           onclick="growSphere()"
           position="-0.2 0 0.02"
           data-raycastable
         ></a-entity>
         <a-entity
-          uivrbutton="text: Shrink Sphere; color: #EF2D5E;"
+          uivrbutton="text: Shrink Sphere; primaryColor: #EF2D5E;"
           onclick="shrinkSphere()"
           position="0 0 0.02"
           data-raycastable
