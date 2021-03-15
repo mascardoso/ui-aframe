@@ -1,4 +1,4 @@
-const UIVRBUTTON = "uivrbutton";
+const UIVRBTN = "uivrbtn";
 
 const lightenHoverColor = function (color, percent) {
   const num = parseInt(color.replace("#", ""), 16),
@@ -29,7 +29,7 @@ const getCurrentPositionButton = function (el) {
 };
 
 const getCurrentPrimaryColor = function (el) {
-  return el.getAttribute(UIVRBUTTON).primaryColor;
+  return el.getAttribute(UIVRBTN).primaryColor;
 };
 
 const setEventListeners = function (el, depth) {
@@ -39,7 +39,7 @@ const setEventListeners = function (el, depth) {
   el.addEventListener("mousedown", function () {
     previousPrimaryColor = getCurrentPrimaryColor(el);
 
-    el.setAttribute(UIVRBUTTON, {
+    el.setAttribute(UIVRBTN, {
       depth: depth / 2,
       primaryColor: lightenHoverColor(previousPrimaryColor, -10), // darken slightly current color
     });
@@ -47,7 +47,7 @@ const setEventListeners = function (el, depth) {
   });
 
   el.addEventListener("mouseup", function () {
-    el.setAttribute(UIVRBUTTON, {
+    el.setAttribute(UIVRBTN, {
       depth: depth,
       primaryColor: previousPrimaryColor,
     });
@@ -55,24 +55,24 @@ const setEventListeners = function (el, depth) {
   });
 };
 
-const setButtonText = function (el, text, depth, width) {
+const setButtonText = function (el, text, depth, width, color) {
   el.setAttribute("text", {
     value: text,
-    color: "white",
+    color,
     zOffset: depth / 2 + 0.001,
     align: "center",
     width: width * 3,
   });
 };
 
-AFRAME.registerComponent(UIVRBUTTON, {
+AFRAME.registerComponent(UIVRBTN, {
   schema: {
     text: { type: "string", default: "Click Me!" },
+    textColor: { type: "color", default: "#FFFFFF" },
     width: { type: "number", default: 0.11 },
     height: { type: "number", default: 0.05 },
     depth: { type: "number", default: 0.04 },
-    primaryColor: { type: "color", default: "#88c88c" },
-    onHoverColor: { type: "color", default: "#5d5d5d" },
+    primaryColor: { type: "color", default: "#88c88c" }
   },
   remove: function () {
     this.el.removeObject3D("mesh");
@@ -85,6 +85,7 @@ AFRAME.registerComponent(UIVRBUTTON, {
     const elDepth = data.depth;
     const elPrimaryColor = data.primaryColor;
     const elText = data.text;
+    const elTextColor = data.textColor;
 
     // Create geometry.
     this.geometry = new AFRAME.THREE.BoxBufferGeometry(
@@ -105,7 +106,7 @@ AFRAME.registerComponent(UIVRBUTTON, {
     el.setObject3D("mesh", this.mesh);
 
     // Set Text on Button
-    setButtonText(el, elText, elDepth, elWidth);
+    setButtonText(el, elText, elDepth, elWidth, elTextColor);
 
     // Set Event Listeners on Button
     setEventListeners(el, elDepth);
@@ -142,8 +143,8 @@ AFRAME.registerComponent(UIVRBUTTON, {
     }
 
     // text-related properties changed. Update the text.
-    if (data.text !== oldData.text) {
-      setButtonText(el, data.text, data.depth, data.width);
+    if (data.text !== oldData.text || data.textColor !== oldData.textColor) {
+      setButtonText(el, data.text, data.depth, data.width, data.textColor);
     }
-  },
+  }
 });

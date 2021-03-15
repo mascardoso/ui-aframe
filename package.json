@@ -1,10 +1,9 @@
 {
-    "name": "ui-aframe",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-      "aframe": "^1.2.0",
-      "dat.gui": "^0.7.7"
-    }
+  "name": "ui-aframe",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "aframe": "^1.2.0",
+    "dat.gui": "^0.7.7"
   }
-  
+}
