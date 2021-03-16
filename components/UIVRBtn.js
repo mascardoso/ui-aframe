@@ -68,11 +68,11 @@ const setButtonText = function (el, text, depth, width, color) {
 AFRAME.registerComponent(UIVRBTN, {
   schema: {
     text: { type: "string", default: "Click Me!" },
-    textColor: { type: "color", default: "#FFFFFF" },
+    textColor: { type: "color", default: "#ffffff" },
     width: { type: "number", default: 0.11 },
     height: { type: "number", default: 0.05 },
     depth: { type: "number", default: 0.04 },
-    primaryColor: { type: "color", default: "#88c88c" }
+    primaryColor: { type: "color", default: "#EF2D5E" }
   },
   remove: function () {
     this.el.removeObject3D("mesh");
