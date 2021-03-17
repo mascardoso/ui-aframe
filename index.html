@@ -16,6 +16,7 @@
     <script type="text/javascript" src="./gui.js"></script>
     <script type="text/javascript" src="./app.js"></script>
     <script type="text/javascript" src="./components/UIVRBtn.js"></script>
+    <script type="text/javascript" src="./components/UIVRBtnSecondary.js"></script>
     <script type="text/javascript" src="./components/UIVRIcon.js"></script>
     <script>
       window.onload = function () {
@@ -66,7 +67,7 @@
       <a-box
         width="0.6"
         height="0.4"
-        depth="0.01"
+        depth="0"
         color="#000000"
         rotation="0 0 0"
         position="0 1.6 -0.5"
@@ -75,18 +76,18 @@
         <a-entity
           uivrbtn="text: Grow Sphere; primaryColor: #EF2D5E;"
           onclick="growSphere()"
-          position="-0.2 0 0.02"
+          position="-0.2 0.13 0.02"
           data-raycastable
         ></a-entity>
         <a-entity
-          uivrbtn="text: Shrink Sphere; primaryColor: #EF2D5E;"
+          uivrbtnsecondary="text: Shrink Sphere; secondaryColor: #FFFFFF;"
           onclick="shrinkSphere()"
-          position="0 0 0.02"
+          position="-0.2 0.05 0.001"
           data-raycastable
         ></a-entity>
         <a-text
-          position="0 0 0.2"
-          uivricon="primaryColor: #EF2D5E; icon: fa-ad">
+          position="0 0 0.001"
+          uivricon="icon: bell; size: xs">
         </a-text>
       </a-box>
 

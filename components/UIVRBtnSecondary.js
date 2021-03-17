@@ -1,13 +1,13 @@
-const UIVRBTN = "uivrbtn";
+const UIVRBTNSECONDARY = "uivrbtnsecondary";
 
-AFRAME.registerComponent(UIVRBTN, {
+AFRAME.registerComponent(UIVRBTNSECONDARY, {
   schema: {
     text: { type: "string", default: "Click Me!" },
-    textColor: { type: "color", default: "#ffffff" },
+    textColor: { type: "color", default: "#000000" },
     width: { type: "number", default: 0.11 },
     height: { type: "number", default: 0.05 },
-    depth: { type: "number", default: 0.04 },
-    primaryColor: { type: "color", default: "#EF2D5E" }
+    depth: { type: "number", default: 0 },
+    secondaryColor: { type: "color", default: "#FFFFFF" }
   },
   remove: function () {
     this.el.removeObject3D("mesh");
@@ -29,38 +29,25 @@ AFRAME.registerComponent(UIVRBTN, {
         .toString(16)
         .slice(1)
     );
+  },  
+  getCurrentSecondaryColor: function (el) {
+    return el.getAttribute(UIVRBTNSECONDARY).secondaryColor;
   },
-  getCurrentPositionButton: function (el) {
-    const position = el.getAttribute("position");
-    return {
-      x: position.x,
-      y: position.y,
-      z: position.z,
-    };
-  },
-  getCurrentPrimaryColor: function (el) {
-    return el.getAttribute(UIVRBTN).primaryColor;
-  },
-  setEventListeners: function (el, depth) {
-    const { x, y, z } = this.getCurrentPositionButton(el);
-    let previousPrimaryColor = this.getCurrentPrimaryColor(el);
+  setEventListeners: function (el) {
+    let previousSecondaryColor = this.getCurrentSecondaryColor(el);
   
-    el.addEventListener("mousedown", function () {
-      previousPrimaryColor = this.getCurrentPrimaryColor(el);
+    el.addEventListener("mousedown", () => {
+      previousSecondaryColor = this.getCurrentSecondaryColor(el);
   
-      el.setAttribute(UIVRBTN, {
-        depth: depth / 2,
-        primaryColor: this.lightenHoverColor(previousPrimaryColor, -10), // darken slightly current color
+      el.setAttribute(UIVRBTNSECONDARY, {
+        secondaryColor: this.lightenHoverColor(previousSecondaryColor, -10), // darken slightly current color
       });
-      el.setAttribute("position", { x, y, z: z / 2 });
     });
   
     el.addEventListener("mouseup", function () {
-      el.setAttribute(UIVRBTN, {
-        depth: depth,
-        primaryColor: previousPrimaryColor,
+      el.setAttribute(UIVRBTNSECONDARY, {
+        secondaryColor: previousSecondaryColor,
       });
-      el.setAttribute("position", { x, y, z: z });
     });
   },
   setButtonText: function (el, text, depth, width, color) {
@@ -78,7 +65,7 @@ AFRAME.registerComponent(UIVRBTN, {
     const elWidth = data.width;
     const elHeight = data.height;
     const elDepth = data.depth;
-    const elPrimaryColor = data.primaryColor;
+    const elSecondaryColor = data.secondaryColor;
     const elText = data.text;
     const elTextColor = data.textColor;
 
@@ -91,7 +78,7 @@ AFRAME.registerComponent(UIVRBTN, {
 
     // Create material.
     this.material = new AFRAME.THREE.MeshStandardMaterial({
-      color: elPrimaryColor,
+      color: elSecondaryColor,
     });
 
     // Create mesh.
@@ -104,7 +91,7 @@ AFRAME.registerComponent(UIVRBTN, {
     this.setButtonText(el, elText, elDepth, elWidth, elTextColor);
 
     // Set Event Listeners on Button
-    this.setEventListeners(el, elDepth);
+    this.setEventListeners(el);
   },
   update: function (oldData) {
     const data = this.data;
@@ -131,9 +118,9 @@ AFRAME.registerComponent(UIVRBTN, {
     }
 
     // Material-related properties changed. Update the material.
-    if (data.primaryColor !== oldData.primaryColor) {
+    if (data.secondaryColor !== oldData.secondaryColor) {
       el.getObject3D("mesh").material.color = new AFRAME.THREE.Color(
-        data.primaryColor
+        data.secondaryColor
       );
     }
 

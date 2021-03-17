@@ -1,16 +1,38 @@
+const loader = new AFRAME.THREE.FontLoader();
 const UIVRICON = "uivricon";
 const FONTICON_FAMILY = "./components/assets/fa-solid-900-msdf.json";
-
-// move this into mapping json
 const FONTICON_FAMILY_MAPPING = {
-  "fa-ad": "",
-  "fa-address-book": "",
+  "adjust": "",
+  "arrow-alt-circle-down": "",
+  "arrow-alt-circle-left":"",
+  "arrow-alt-circle-right":"",
+  "arrow-alt-circle-up":"",
+  "battery-full":"",
+  "battery-empty":"",
+  "bell":"",
+  "bell-slash":"",
+  "bolt":"",
+  "calendar-alt":"",
+  "camera":"",
+  "check-circle":"",
+  "cog":"",
+  "comment":"",
+  "dollar-sign":"",
+  "exclamation-circle":""  
+};
+const FONTICON_SIZING_MAPPING = {
+  "xs": "0.2 0.2 0.2",
+  "s": "0.4 0.4 0.4",
+  "m": "0.6 0.6 0.6",
+  "l": "0.8 0.8 0.8",
+  "xl": "1 1 1"
 };
 
 AFRAME.registerComponent(UIVRICON, {
   schema: {
-    icon: { type: "string", default: "fa-ad" },
-    primaryColor: { type: "color", default: "#EF2D5E" },
+    icon: { type: "string", default: "check-circle" },
+    size: { type: "string", default: "s" },
+    color: { type: "color", default: "#FFFFFF" },
   },
   remove: function () {
     this.el.removeObject3D("mesh");
@@ -19,15 +41,16 @@ AFRAME.registerComponent(UIVRICON, {
     const data = this.data;
     const el = this.el;
     const elIcon = data.icon;
-    const elPrimaryColor = data.primaryColor;
+    const elIconSize = data.size;
+    const elColor = data.color;
 
-    const loader = new AFRAME.THREE.FontLoader();
     loader.load(FONTICON_FAMILY, function () {
       el.setAttribute("font", FONTICON_FAMILY);
-      el.setAttribute("color", elPrimaryColor);
+      el.setAttribute("color", elColor);
       el.setAttribute("value", FONTICON_FAMILY_MAPPING[elIcon]);
       el.setAttribute("side", "double");
       el.setAttribute("negate", "false");
+      el.setAttribute("scale", FONTICON_SIZING_MAPPING[elIconSize])
     });
   },
   update: function (oldData) {
