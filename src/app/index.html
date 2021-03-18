@@ -4,30 +4,7 @@
     <meta charset="utf-8" />
     <title>Hello A-Frame UI</title>
     <meta name="description" content="Hello A-Frame UI" />
-    <script
-      type="text/javascript"
-      src="./node_modules/aframe/dist/aframe-v1.2.0.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="./node_modules/dat.gui/build/dat.gui.min.js"
-    ></script>
-    <!-- <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"></script> -->
-    <script type="text/javascript" src="./gui.js"></script>
-    <script type="text/javascript" src="./app.js"></script>
-    <script type="text/javascript" src="./components/UIVRBtn.js"></script>
-    <script type="text/javascript" src="./components/UIVRBtnSecondary.js"></script>
-    <script type="text/javascript" src="./components/UIVRIcon.js"></script>
-    <script>
-      window.onload = function () {
-        addGUI([
-          {
-            folder: "Colors",
-            component: "uivrbtn",
-          },
-        ]);
-      };
-    </script>
+    <script type="text/javascript" src="./bundle.js"></script>
   </head>
   <body>
     <a-scene
@@ -75,13 +52,13 @@
       >
         <a-entity
           uivrbtn="text: Grow Sphere; primaryColor: #EF2D5E;"
-          onclick="growSphere()"
+          onclick="window.app.growSphere()"
           position="-0.2 0.13 0.02"
           data-raycastable
         ></a-entity>
         <a-entity
           uivrbtnsecondary="text: Shrink Sphere; secondaryColor: #FFFFFF;"
-          onclick="shrinkSphere()"
+          onclick="window.app.shrinkSphere()"
           position="-0.2 0.05 0.001"
           data-raycastable
         ></a-entity>

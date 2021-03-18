@@ -1,6 +1,6 @@
+import AFRAME from 'aframe'
 const loader = new AFRAME.THREE.FontLoader();
 const UIVRICON = "uivricon";
-const FONTICON_FAMILY = "./components/assets/fa-solid-900-msdf.json";
 const FONTICON_FAMILY_MAPPING = {
   "adjust": "",
   "arrow-alt-circle-down": "",
@@ -44,8 +44,8 @@ AFRAME.registerComponent(UIVRICON, {
     const elIconSize = data.size;
     const elColor = data.color;
 
-    loader.load(FONTICON_FAMILY, function () {
-      el.setAttribute("font", FONTICON_FAMILY);
+    loader.load("./components/assets/fa-solid-900-msdf.json", function () {
+      el.setAttribute("font", "./components/assets/fa-solid-900-msdf.json");
       el.setAttribute("color", elColor);
       el.setAttribute("value", FONTICON_FAMILY_MAPPING[elIcon]);
       el.setAttribute("side", "double");

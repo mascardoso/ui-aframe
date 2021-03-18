@@ -1,8 +1,10 @@
+import dat from 'dat.gui'
+
 const initControls = function (data) {
   this.primary = data.primaryColor;
 };
 
-const addGUI = function (uis) {
+export const addGUI = function (uis) {
   const gui = new dat.GUI();
 
   uis.map((ui) => {

@@ -1,12 +1,19 @@
-function getSphere() {
+const getSphere = () => {
   const el = document.querySelector("[data-sphere]");
   return { el, currentRadius: parseFloat(el.getAttribute("radius")) };
-}
-function growSphere() {
+};
+
+const growSphere = () => {
   const { el, currentRadius } = getSphere();
   el.setAttribute("radius", currentRadius + 0.05);
-}
-function shrinkSphere() {
+};
+
+const shrinkSphere = () => {
   const { el, currentRadius } = getSphere();
   el.setAttribute("radius", currentRadius - 0.05);
+};
+
+export {
+  growSphere,
+  shrinkSphere
 }
