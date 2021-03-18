@@ -12,6 +12,7 @@
       cursor="rayOrigin: mouse"
       raycaster="objects: [data-raycastable]"
     >
+      <!-- Scene Playground -->
       <a-box
         position="-1 0.5 -3"
         rotation="0 45 0"
@@ -41,6 +42,7 @@
         shadow
       ></a-plane>
 
+      <!-- UI VR -->
       <a-box
         width="0.6"
         height="0.4"
@@ -50,6 +52,7 @@
         position="0 1.6 -0.5"
         material="transparent: true; opacity: 0.7"
       >
+        <!--BUTTONS-->
         <a-entity
           uivrbtn="text: Grow Sphere; primaryColor: #EF2D5E;"
           onclick="window.app.growSphere()"
@@ -62,9 +65,43 @@
           position="-0.2 0.05 0.001"
           data-raycastable
         ></a-entity>
-        <a-text
-          position="0 0 0.001"
-          uivricon="icon: bell; size: xs">
+
+        <!--ICONS-->
+        <a-text position="0.06 0.08 0.001" uivricon="icon: exclamation-circle; size: xs">
+        </a-text>
+        <a-text position="0.10 0.08 0.001" uivricon="icon: dollar-sign; size: xs">
+        </a-text>
+        <a-text position="0.14 0.08 0.001" uivricon="icon: comment; size: xs">
+        </a-text>
+        <a-text position="0.18 0.08 0.001" uivricon="icon: cog; size: xs">
+        </a-text>
+        <a-text position="0.22 0.08 0.001" uivricon="icon: check-circle; size: xs">
+        </a-text>
+        <a-text position="0.26 0.08 0.001" uivricon="icon: camera; size: xs">
+        </a-text>
+        <a-text position="0.06 0.12 0.001" uivricon="icon: bolt; size: xs">
+        </a-text>
+        <a-text position="0.10 0.12 0.001" uivricon="icon: calendar-alt; size: xs">
+        </a-text>
+        <a-text position="0.14 0.12 0.001" uivricon="icon: bell-slash; size: xs">
+        </a-text>
+        <a-text position="0.18 0.12 0.001" uivricon="icon: bell; size: xs">
+        </a-text>
+        <a-text position="0.22 0.12 0.001" uivricon="icon: battery-empty; size: xs">
+        </a-text>
+        <a-text position="0.26 0.12 0.001" uivricon="icon: battery-full; size: xs">
+        </a-text>
+        <a-text position="0.06 0.16 0.001" uivricon="icon: arrow-alt-circle-left; size: xs">
+        </a-text>
+        <a-text position="0.10 0.16 0.001" uivricon="icon: arrow-alt-circle-left; size: xs">
+        </a-text>
+        <a-text position="0.14 0.16 0.001" uivricon="icon: arrow-alt-circle-up; size: xs">
+        </a-text>
+        <a-text position="0.18 0.16 0.001" uivricon="icon: arrow-alt-circle-down; size: xs">
+        </a-text>
+        <a-text position="0.22 0.16 0.001" uivricon="icon: bell; size: xs">
+        </a-text>
+        <a-text position="0.26 0.16 0.001" uivricon="icon: adjust; size: xs;">
         </a-text>
       </a-box>
 

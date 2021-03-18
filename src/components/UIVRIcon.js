@@ -1,5 +1,6 @@
 import AFRAME from 'aframe'
 const loader = new AFRAME.THREE.FontLoader();
+const FONTICON_FAMILY_URL = './assets/fa-solid-900-msdf.json'
 const UIVRICON = "uivricon";
 const FONTICON_FAMILY_MAPPING = {
   "adjust": "",
@@ -43,15 +44,19 @@ AFRAME.registerComponent(UIVRICON, {
     const elIcon = data.icon;
     const elIconSize = data.size;
     const elColor = data.color;
-
-    loader.load("./components/assets/fa-solid-900-msdf.json", function () {
-      el.setAttribute("font", "./components/assets/fa-solid-900-msdf.json");
-      el.setAttribute("color", elColor);
+    const elAttrFont = el.getAttribute('font')
+    const elAttrValue = el.getAttribute('value')
+    const elAttrColor = el.getAttribute('color')
+    
+    !elAttrFont && !elAttrValue && loader.load(FONTICON_FAMILY_URL, function () {
+      el.setAttribute("font", FONTICON_FAMILY_URL);
       el.setAttribute("value", FONTICON_FAMILY_MAPPING[elIcon]);
       el.setAttribute("side", "double");
       el.setAttribute("negate", "false");
-      el.setAttribute("scale", FONTICON_SIZING_MAPPING[elIconSize])
     });
+
+    !elAttrColor && el.setAttribute("color", elColor);
+    el.setAttribute("scale", FONTICON_SIZING_MAPPING[elIconSize])
   },
   update: function (oldData) {
     const data = this.data;
@@ -64,9 +69,9 @@ AFRAME.registerComponent(UIVRICON, {
     }
 
     // Material-related properties changed. Update the material.
-    if (data.primaryColor !== oldData.primaryColor) {
+    if (data.color !== oldData.color) {
       el.getObject3D("mesh").material.color = new AFRAME.THREE.Color(
-        data.primaryColor
+        data.color
       );
     }
   },
