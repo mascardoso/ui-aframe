@@ -7,10 +7,10 @@ window.app = {
 }
 
 window.onload = function () {
-  addGUI([
-    {
-      folder: "Colors",
-      component: "uivrbtn",
+  addGUI([{
+    colors: {
+      uivrbtn: ['primary'],
+      uivrbtnsecondary: ['secondary']
     },
-  ]);
+  }]);
 };
