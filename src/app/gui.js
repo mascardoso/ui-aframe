@@ -17,7 +17,6 @@ export const addGUI = function (uis) {
           const data = el.getAttribute(component);
           colorControls = new initColorControls(data);
         });
-
       });
     });
   });
