@@ -1,5 +1,5 @@
-import AFRAME from 'aframe'
-import { lightenHoverColor } from './utils'
+import AFRAME from "aframe";
+import { lightenHoverColor } from "./utils";
 
 const UIVRBTNSECONDARY = "uivrbtnsecondary";
 
@@ -38,11 +38,11 @@ const setButtonText = function (el, text, depth, width, color) {
 AFRAME.registerComponent(UIVRBTNSECONDARY, {
   schema: {
     text: { type: "string", default: "Click Me!" },
-    textColor: { type: "color", default: "#000000" },
+    textColor: { type: "color", default: "#FFFFFF" },
     width: { type: "number", default: 0.11 },
     height: { type: "number", default: 0.05 },
     depth: { type: "number", default: 0 },
-    secondaryColor: { type: "color", default: "#FFFFFF" }
+    secondaryColor: { type: "color", default: "#f57d55" },
   },
   remove: function () {
     this.el.removeObject3D("mesh");
@@ -116,5 +116,5 @@ AFRAME.registerComponent(UIVRBTNSECONDARY, {
     if (data.text !== oldData.text || data.textColor !== oldData.textColor) {
       setButtonText(el, data.text, data.depth, data.width, data.textColor);
     }
-  }
+  },
 });

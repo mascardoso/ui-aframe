@@ -5,12 +5,14 @@
     <title>Hello A-Frame UI</title>
     <meta name="description" content="Hello A-Frame UI" />
     <script type="text/javascript" src="./bundle.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"></script> -->
   </head>
   <body>
     <a-scene
       background="color: #ECECEC"
       cursor="rayOrigin: mouse"
       raycaster="objects: [data-raycastable]"
+      inspector
     >
       <!-- Scene Playground -->
       <a-box
@@ -44,7 +46,7 @@
 
       <!-- UI VR -->
       <a-box
-        width="0.6"
+        width="1.4"
         height="0.4"
         depth="0"
         color="#000000"
@@ -54,13 +56,13 @@
       >
         <!--BUTTONS-->
         <a-entity
-          uivrbtn="text: Grow Sphere; primaryColor: #EF2D5E;"
+          uivrbtn="text: Primary; primaryColor: #EF2D5E;"
           onclick="window.app.growSphere()"
           position="-0.2 0.13 0.02"
           data-raycastable
         ></a-entity>
         <a-entity
-          uivrbtnsecondary="text: Shrink Sphere; secondaryColor: #FFFFFF;"
+          uivrbtnsecondary="text: Secondary; secondaryColor: #f57d55;"
           onclick="window.app.shrinkSphere()"
           position="-0.2 0.05 0.001"
           data-raycastable
@@ -102,6 +104,18 @@
         <a-text position="0.22 0.16 0.001" uivricon="icon: bell; size: xs">
         </a-text>
         <a-text position="0.26 0.16 0.001" uivricon="icon: adjust; size: xs;">
+        </a-text>
+
+        <!--HEADINGS-->
+        <a-text position="0.32 0.145 0.001" uivrheading="text: Heading XL; size: xl;">
+        </a-text>
+        <a-text position="0.32 0.06 0.001" uivrheading="text: Heading L; size: l;">
+        </a-text>
+        <a-text position="0.32 -0.02 0.001" uivrheading="text: Heading M; size: m;">
+        </a-text>
+        <a-text position="0.32 -0.09 0.001" uivrheading="text: Heading S; size: s;">
+        </a-text>
+        <a-text position="0.32 -0.15 0.001" uivrheading="text: Heading XS; size: xs;">
         </a-text>
       </a-box>
 

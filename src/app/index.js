@@ -7,10 +7,5 @@ window.app = {
 }
 
 window.onload = function () {
-  addGUI([{
-    colors: {
-      uivrbtn: ['primary'],
-      uivrbtnsecondary: ['secondary']
-    },
-  }]);
+  addGUI();
 };
